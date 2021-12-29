@@ -17,8 +17,7 @@ def get_filters():
     """
     print('Hello! Let\'s explore some US bikeshare data!')
     
-    # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    
+    # get user input for city (chicago, new york city, washington).
     while True:
         cities = ['chicago', 'new york city', 'washington']
         city = input("\n Which city would you like to analyse? (Chicago, New york city, Washington) \n").lower()
@@ -28,7 +27,7 @@ def get_filters():
         else:
             print("\n Invalid input. Please enter a valid city name.")    
 
-    # TO DO: get user input for month (all, january, february, ... , june)
+    # get user input for month (all, january, february, ... , june)
     while True:
         months= ['January','February','March','April','May','June','All']
         month = input("\n Which month would you like to consider? (January, February, March, April, May, June)? Type 'All' for no month filter\n").title()
@@ -38,7 +37,7 @@ def get_filters():
         else:
             print("\n Invalid input. Please enter a valid month")    
 
-    # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
+    # get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
         days= ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','All']
         day = input("\n Which day of the week would you like to consider? (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)? Type 'All' for no day filter \n").title()         
@@ -96,15 +95,15 @@ def time_stats(df):
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
-    # TO DO: display the most common month
+    # display the most common month
     common_month = df['month'].mode()[0]
     print("The most common month is {}.".format(common_month))
 
-    # TO DO: display the most common day of week
+    # display the most common day of week
     common_dow = df['day_of_week'].mode()[0]
     print("The most common day of the week is {}.".format(common_dow))
              
-    # TO DO: display the most common start hour
+    # display the most common start hour
     common_start_hour = df['hour'].mode()[0]
     print("The most common start hour is {}.".format(common_start_hour))
 
@@ -118,15 +117,15 @@ def station_stats(df):
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
 
-    # TO DO: display most commonly used start station
+    # display most commonly used start station
     common_start_station= df['Start Station'].mode()[0]
     print("The most commonly used Start Station is {}.".format(common_start_station))
 
-    # TO DO: display most commonly used end station
+    # display most commonly used end station
     common_end_station= df['End Station'].mode()[0]
     print("The most commonly used End Station is {}.".format(common_end_station))
 
-    # TO DO: display most frequent combination of start station and end station trip
+    # display most frequent combination of start station and end station trip
     df['Trip Route']=df['Start Station'] + " " + "to" + " "+ df['End Station']
     common_route = df['Trip Route'].mode()[0]
     print("The most frequent combination of Start and End Station is {}.".format(common_route))
@@ -141,7 +140,7 @@ def trip_duration_stats(df):
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
-    # TO DO: display total travel time
+    # display total travel time
     total_travel_time = df['Trip Duration'].sum()
     #calculate duration in minutes and seconds
     minute,second = divmod(total_travel_time,60)
@@ -149,7 +148,7 @@ def trip_duration_stats(df):
     hour,minute = divmod(minute,60)
     print("The total trip duration is {} hour(s), {} minute(s) and {} second(s).".format(hour,minute,second))
 
-    # TO DO: display mean travel time
+    # display mean travel time
     avg_travel_time = round(df['Trip Duration'].mean())
     minute,second = divmod(avg_travel_time,60)
     if minute > 60:
@@ -168,7 +167,7 @@ def user_stats(df):
     print('\nCalculating User Stats...\n')
     start_time = time.time()
 
-    # TO DO: Display counts of user types
+    # Display counts of user types
     user_type_count= df['User Type'].value_counts()
     print("\nThe number of users by type is: \n{}".format(user_type_count))
 
