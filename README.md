@@ -7,12 +7,10 @@ This project was created on December 6, 2021
 Anita's Bikeshare project
 
 ### Description
-This writes code that provides an interactive experience for users to view trip data from three different cities
+This writes code that provides an interactive experience for users to view trip data from three different cities.
 
-### Files used
-chicago.csv
-new_york_city.csv
-washington.csv
+### App used
+This code was written using [Python for windows](https://www.python.org/downloads/release/python-3101/)
 
 
 
