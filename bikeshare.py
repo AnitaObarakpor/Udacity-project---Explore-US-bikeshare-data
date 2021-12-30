@@ -16,36 +16,46 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
+<<<<<<< HEAD
     
     # get user input for city (chicago, new york city, washington).
+||||||| parent of 0ad4599 (Edit print statements for better user experience)
+    
+    # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+    
+=======
+
+    # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+
+>>>>>>> 0ad4599 (Edit print statements for better user experience)
     while True:
         cities = ['chicago', 'new york city', 'washington']
         city = input("\n Which city would you like to analyse? (Chicago, New york city, Washington) \n").lower()
         if city in cities:
-            print("\nYou have chosen {} as your city.".format(city.title()))
+            print("\nYou have chosen to view {} trip data.".format(city.title()))
             break
         else:
-            print("\n Invalid input. Please enter a valid city name.")    
+            print("\n Ooops! Invalid input. Please enter a valid city name.")
 
     # get user input for month (all, january, february, ... , june)
     while True:
         months= ['January','February','March','April','May','June','All']
         month = input("\n Which month would you like to consider? (January, February, March, April, May, June)? Type 'All' for no month filter\n").title()
         if month in months:
-            print("\nYou have chosen {} as your month.".format(month))
+            print("\nYou have chosen to view {} trip data.".format(month))
             break
         else:
-            print("\n Invalid input. Please enter a valid month")    
+            print("\n Oops! Invalid input. Please enter a valid month")
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
         days= ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','All']
-        day = input("\n Which day of the week would you like to consider? (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)? Type 'All' for no day filter \n").title()         
+        day = input("\n Which day of the week would you like to consider? (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)? Type 'All' for no day filter \n").title()
         if day in days:
-            print("\nYou have chosen {} as your day of the week.".format(day))
+            print("\nYou have chosen to view {} trip data.".format(day))
             break
         else:
-            print("\n Invalid input! Please enter a valid day") 
+            print("\n Invalid input! Please enter a valid day")
 
     print('-'*40)
     return city, month, day
@@ -77,9 +87,9 @@ def load_data(city, month, day):
     if month != 'All':
         months = ['January', 'February', 'March', 'April', 'May', 'June']
         month = months.index(month) + 1
-    
+
         # filter by month to create the new dataframe
-        df = df[df['month'] == month] 
+        df = df[df['month'] == month]
 
     # filter by day of week if applicable
     if day != 'All':
@@ -99,6 +109,7 @@ def time_stats(df):
     common_month = df['month'].mode()[0]
     print("The most common month is {}.".format(common_month))
 
+<<<<<<< HEAD
     # display the most common day of week
     common_dow = df['day_of_week'].mode()[0]
     print("The most common day of the week is {}.".format(common_dow))
@@ -106,6 +117,23 @@ def time_stats(df):
     # display the most common start hour
     common_start_hour = df['hour'].mode()[0]
     print("The most common start hour is {}.".format(common_start_hour))
+||||||| parent of 0ad4599 (Edit print statements for better user experience)
+    # TO DO: display the most common day of week
+    popular_dow = df['day_of_week'].mode()[0]
+    print("The most common day of the week is {}.".format(popular_dow))
+             
+    # TO DO: display the most common start hour
+    popular_start_hour = df['hour'].mode()[0]
+    print("The most common start hour is {}.".format(popular_start_hour))
+=======
+    # TO DO: display the most common day of week
+    popular_dow = df['day_of_week'].mode()[0]
+    print("The most common day of the week is {}.".format(popular_dow))
+
+    # TO DO: display the most common start hour
+    popular_start_hour = df['hour'].mode()[0]
+    print("The most common start hour is {}.".format(popular_start_hour))
+>>>>>>> 0ad4599 (Edit print statements for better user experience)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -173,13 +201,13 @@ def user_stats(df):
 
     # Display counts of gender
     # The try clause ensures only files containing a 'gender' column are displayed
-    try: 
+    try:
         gender_count= df['Gender'].value_counts()
         print("\nThe number of users by gender is:\n{}".format(gender_count))
     except:
         print("\nThere is no 'Gender' column in this file.")
-             
-    # Display earliest, most recent, and most common year of birth 
+
+    # Display earliest, most recent, and most common year of birth
     # Try clause ensures only files with column 'birth year' are displayed
     try:
         earliest = int(df['Birth Year'].min())
@@ -190,14 +218,14 @@ def user_stats(df):
         print("\nThe most common birth year is {}.".format(most_common_year))
     except:
         print("\nThere are no 'Birth Year' details in this file.")
-    
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
-    
+
+
 def display_data(df):
     """Displays 5 rows of data from the file for the selected city"""
-    
+
     while True:
         valid_response = ['yes','no']
         response = input("Would you like to view individual trip data (5 entries)? Enter 'yes' or 'no'\n").lower()
@@ -207,10 +235,10 @@ def display_data(df):
                 end=5
                 trip_data = df.iloc[start:end,:9]
                 print(trip_data)
-            break     
+            break
         else:
             print("Please enter a valid response")
-    if  response == 'yes':       
+    if  response == 'yes':
             while True:
                 response_again = input("Would you like to view more trip data? Enter 'yes' or 'no'\n").lower()
                 if response_again in valid_response:
@@ -219,10 +247,10 @@ def display_data(df):
                         end += 5
                         trip_data = df.iloc[start:end,:9]
                         print(trip_data)
-                    else:    
-                        break  
+                    else:
+                        break
                 else:
-                    print("Please enter a valid response")  
+                    print("Please enter a valid response")
 
 def main():
     while True:
@@ -234,7 +262,7 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
         display_data(df)
-        
+
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
